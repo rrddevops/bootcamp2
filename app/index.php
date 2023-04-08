@@ -21,8 +21,11 @@
         <?php
                 $url = "http://169.254.169.254/latest/meta-data/instance-id";
                 $url2 = http://169.254.169.254/metadata/v1/hostname";
-                $instance_id = file_get_contents($url, $url2, versão 1);
+                $instance_id = file_get_contents($url);
+                $hostname = file_get_contents($url2);
                 echo " <h1> <font color='red'>  Instance ID: <b>" . $instance_id . "</b><br/></font> </h1> ";
+                echo " <h1> <font color='red'>  Instance ID: <b>" . $hostname . "</b><br/></font> </h1> ";
+                echo " <h1> <font color='red'>  Instance ID: <b>" . versao2 . "</b><br/></font> </h1> ";
         ?>
 </body>
 </html>
