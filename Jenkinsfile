@@ -11,7 +11,7 @@ pipeline{
      	stage('clone repo') {
 		    steps {
                 // Get some code from a GitHub repository
-                git url: 'https://github.com/rrddevops/bootcamp2.git', credentialsId: 'githubsec' ,branch: 'main'
+                git url: 'https://github.com/rrddevops/bootcamp2.git', credentialsId: 'github' ,branch: 'main'
 
           	}
 	  	}
@@ -40,7 +40,7 @@ pipeline{
 		stage('Deploy App') {
       		steps {
         	script {
-          	kubernetesDeploy(configs: "deployments.yaml", kubeconfigId: "mykubeconfig")
+          	kubernetesDeploy(configs: "deployments.yaml", kubeconfigId: "kubeconfig")
         	}
       	}
 	}
