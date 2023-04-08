@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://amlanscloud.com/static/9def0d99a7abafd287ee1546d83c3fd4/d6be1/ekspipeline.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Terraform EKS Jenkins pipeline app</h3>
@@ -35,7 +35,7 @@
 
 ## About The Project
 
-![Screen Shot](images/screenshot.png)
+![Screen Shot](https://i.ytimg.com/vi/Hz_zWe64uyY/hqdefault.jpg)
 
 Criar developer token no github;
 Adicionar no jenkins credentials para push do repositório;
