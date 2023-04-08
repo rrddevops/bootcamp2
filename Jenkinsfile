@@ -39,7 +39,7 @@ pipeline{
 
 		stage('EKS Cluster and Deploy') {
             steps {
-				withCredentials(region: 'us-east-1', credentials: 'aws-cred') {
+				withAWS(credentials: 'aws-cred', region: 'us-east-1') {
                     script {
 						sh 'aws eks update-kubeconfig --name teste --region us-east-1'
 						sh 'kubectl get svc'
