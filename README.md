@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2">
-    <img src="https://amlanscloud.com/static/9def0d99a7abafd287ee1546d83c3fd4/d6be1/ekspipeline.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/rrddevops/bootcamp2">
+    <img src="https://amlanscloud.com/static/9def0d99a7abafd287ee1546d83c3fd4/d6be1/ekspipeline.png" alt="Logo">
   </a>
 
   <h3 align="center">Terraform EKS Jenkins pipeline app</h3>
@@ -9,7 +9,7 @@
   <p align="center">
     Projeto completo para criação de ambiente AWS com Jenkins e cluster EKS.
     <br/>
-    <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/rrddevops/bootcamp2"><strong>Explore the docs »</strong></a>
     <br/>
 </p>
 
