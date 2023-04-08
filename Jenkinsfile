@@ -37,15 +37,17 @@ pipeline{
 			}
 		}
 
-		stage('Deploy App') {
-      		
-			steps {
-        		script {
-          		kubernetesDeploy(configs: "deployments.yaml", kubeconfigId: "kubesecrets")
-        		}
-      		}
+		stage('Integrate Jenkins with EKS Cluster and Deploy') {
+            steps {
+				withAWS(credentials: 'aws-cred', region: 'us-east-1') {
+                    script {
+						sh 'aws eks update-kubeconfig --name teste --region us-east-1'
+						sh 'kubectl get svc'
+						sh 'kubectl apply -f deployments.yaml'
+					}
+				}
+			}
 		}
-	}
 	
 	post {
 		always {
