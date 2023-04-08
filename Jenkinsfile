@@ -8,7 +8,7 @@ pipeline{
 
 	stages {
 
-     	stage('clone repo') {
+     	stage('Clone repo') {
 		    steps {
                 // Get some code from a GitHub repository
                 git url: 'https://github.com/rrddevops/bootcamp2.git', credentialsId: 'github' ,branch: 'main'
@@ -37,9 +37,9 @@ pipeline{
 			}
 		}
 
-		stage('Integrate Jenkins with EKS Cluster and Deploy') {
+		stage('EKS Cluster and Deploy') {
             steps {
-				withAWS(credentials: 'aws-cred', region: 'us-east-1') {
+				withAWS(region: 'us-east-1', credentials: 'aws-cred') {
                     script {
 						sh 'aws eks update-kubeconfig --name teste --region us-east-1'
 						sh 'kubectl get svc'
@@ -48,6 +48,7 @@ pipeline{
 				}
 			}
 		}
+	}
 	
 	post {
 		always {
