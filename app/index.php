@@ -24,7 +24,7 @@
                 $instance_id = file_get_contents($url);
                 $hostname = file_get_contents($url2);
                 echo " <h1> <font color='red'>  Instance ID: <b>" . $instance_id . "</b><br/></font> </h1> ";
-                echo " <h1> <font color='red'>  Instance ID: <b>" . $hostname . "</b><br/></font> </h1> ";
+                echo " <h1> <font color='red'>  HostnameD: <b>" . $hostname . "</b><br/></font> </h1> ";
                 versão 2
         ?>
 </body>
