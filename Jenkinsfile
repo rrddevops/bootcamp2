@@ -36,6 +36,13 @@ pipeline{
 				sh 'docker push rodrigordavila/web-php-aws:latest'
 			}
 		}
+
+		stage('Deploy App') {
+      		steps {
+        	script {
+          	kubernetesDeploy(configs: "deployments.yaml", kubeconfigId: "mykubeconfig")
+        	}
+      	}
 	}
 
 	post {
