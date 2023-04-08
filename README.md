@@ -27,52 +27,52 @@
 
 ![Screen Shot](https://i.ytimg.com/vi/Hz_zWe64uyY/hqdefault.jpg)
 
-Criar developer token no github;
-Adicionar no jenkins credentials para push do repositório;
+Criar developer token no github;<br/>
+Adicionar no jenkins credentials para push do repositório;<br/>
 
-Adicionar plugins no Jenkins:
-Git plugin 
-GitHub plugin
-Docker plugin
-Docker Pipeline
-Maven Integration
-Pipeline: AWS Steps
-Amazon Web Services SDK :: All
-CloudBees AWS Credentials Plugin
-Kubernetes Credentials Plugin 
-Kubernetes plugin 
+Adicionar plugins no Jenkins:<br/>
+Git plugin <br/>
+GitHub plugin<br/>
+Docker plugin<br/>
+Docker Pipeline<br/>
+Maven Integration<br/>
+Pipeline: AWS Steps<br/>
+Amazon Web Services <br/>
+CloudBees AWS Credentials Plugin<br/>
+Kubernetes Credentials Plugin <br/>
+Kubernetes plugin <br/>
 
-
+<br/>
 
 ## Built With
 
-Terraform
-Jenkins
-K8s
-Nginx docker image
+Terraform<br/>
+Jenkins<br/>
+K8s<br/>
+Nginx docker image<br/>
 
 ## Getting Started
 
-Como executar
+Como executar<br/>
 
 ### Prerequisites
 
-Ter uma conta na AWS
-Ter uma conta no Dockerhub
-Install terraform
-Install aws CLI
-Criar credencial AWS
+Ter uma conta na AWS<br/>
+Ter uma conta no Dockerhub<br/>
+Install terraform<br/>
+Install aws CLI<br/>
+Criar credencial AWS<br/>
 
-Executar a criação do cluster EKS
-Executar a criação do Jenkins
-Editar os arquivos do Jenkinsfile e deployments para seu ambiente
+Executar a criação do cluster EKS<br/>
+Executar a criação do Jenkins<br/>
+Editar os arquivos do Jenkinsfile e deployments para seu ambiente<br/>
 
 
 ### Installation
 
-terraform init
-terraform plan
-terraform plan
+terraform init<br/>
+terraform plan<br/>
+terraform plan<br/>
 
 ### Creating A Pull Request
 
