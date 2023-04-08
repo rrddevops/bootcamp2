@@ -42,7 +42,6 @@ pipeline{
 				withAWS(credentials: 'aws-cred', region: 'us-east-1') {
                     script {
 						sh 'aws eks update-kubeconfig --name bootcamp-dev-eks --region us-east-1'
-						sh 'kubectl get svc'
 						sh 'kubectl apply -f deployments.yaml'
 					}
 				}
