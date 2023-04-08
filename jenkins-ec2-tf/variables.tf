@@ -32,6 +32,9 @@ sudo systemctl daemon-reload
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 sudo systemctl restart jenkins
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.24.11/2023-03-17/bin/linux/amd64/kubectl
+sudo chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 EOF
 }
