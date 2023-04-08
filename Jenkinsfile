@@ -39,7 +39,7 @@ pipeline{
 
 		stage('EKS Cluster and Deploy') {
             steps {
-				withAWS(credentials: 'aws-cred', region: 'us-east-1') {
+				withAWS(region: 'us-east-1', credentials: 'aws-cred') {
                     script {
 						sh 'aws eks update-kubeconfig --name bootcamp-dev-eks'
 						sh 'kubectl apply -f deployments.yaml'
