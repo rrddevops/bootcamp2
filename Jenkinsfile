@@ -38,17 +38,12 @@ pipeline{
 		}
 
 		stage('Deploy App') {
-      		steps {
-        	script {
-          	kubernetesDeploy(configs: "deployments.yaml", kubeconfigId: "kubeconfig")
-        	}
-      	}
-	}
-
-	post {
-		always {
-			sh 'docker logout'
+      		
+			steps {
+        		script {
+          		kubernetesDeploy(configs: "deployments.yaml", kubeconfigId: "kubesecrets")
+        		}
+      		}
 		}
 	}
-
 }
