@@ -9,19 +9,9 @@
   <p align="center">
     Projeto completo para criação de ambiente AWS com Jenkins e cluster EKS.
     <br/>
-    <br/>
     <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2"><strong>Explore the docs »</strong></a>
     <br/>
-    <br/>
-    <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2">View Demo</a>
-    .
-    <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2/issues">Report Bug</a>
-    .
-    <a href="https://github.com/rrdevops/https://github.com/rrddevops/bootcamp2/issues">Request Feature</a>
-  </p>
 </p>
-
-![Downloads](https://img.shields.io/github/downloads/rrdevops/https://github.com/rrddevops/bootcamp2/total) ![Contributors](https://img.shields.io/github/contributors/rrdevops/https://github.com/rrddevops/bootcamp2?color=dark-green) ![Issues](https://img.shields.io/github/issues/rrdevops/https://github.com/rrddevops/bootcamp2) ![License](https://img.shields.io/github/license/rrdevops/https://github.com/rrddevops/bootcamp2) 
 
 ## Table Of Contents
 
