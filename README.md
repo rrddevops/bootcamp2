@@ -48,8 +48,13 @@ Como executar<br/>
 ## Built With
 
 Terraform create:<br/>
+Deploy EKS <br/>
 Deploy Jenkins
-Deploy EKS 
+
+Conect your jenkins IP output ec2: <br/>
+ssh -i "tf-key-pair.pem" ec2-user@ip<br/>
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword<br/>
+
 
 ### Installation
 
@@ -62,15 +67,13 @@ Add Plugins<br/>
 	Git<br/>
 	GitHub<br/>
 	Docker<br/>
-	Kubernetes<br/>
-	kubernetes continuous deploy<br/>
+  CloudBees AWS Credentials Plugin<br/>
+	Pipeline: AWS StepsVersion<br/>
 
 Jenkins credentials:<br/>
 github<br/>
-docker<br/>
-kubernets<br/>
-cloud kubernetes with jenkins/jnlp-slave<br/>
-
+aws
+dockerhub<br/>
 
 ## Getting Started
 
