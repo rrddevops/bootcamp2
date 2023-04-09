@@ -27,46 +27,29 @@
 
 ![Screen Shot](https://i.ytimg.com/vi/Hz_zWe64uyY/hqdefault.jpg)
 
-Criar developer token no github;<br/>
-Adicionar no jenkins credentials para push do repositório;<br/>
-
-Adicionar plugins no Jenkins:<br/>
-Git plugin <br/>
-GitHub plugin<br/>
-Docker plugin<br/>
-Docker Pipeline<br/>
-Maven Integration<br/>
-Pipeline: AWS Steps<br/>
-Amazon Web Services <br/>
-CloudBees AWS Credentials Plugin<br/>
-Kubernetes Credentials Plugin <br/>
-Kubernetes plugin <br/>
-
-<br/>
-
-## Built With
-
-Terraform<br/>
-Jenkins<br/>
-K8s<br/>
-Nginx docker image<br/>
-
-## Getting Started
-
-Como executar<br/>
-
 ### Prerequisites
 
 Ter uma conta na AWS<br/>
 Ter uma conta no Dockerhub<br/>
 Install terraform<br/>
 Install aws CLI<br/>
-Criar credencial AWS<br/>
+Criar credencial AWS para executar o terraform<br/>
 
-Executar a criação do cluster EKS<br/>
-Executar a criação do Jenkins<br/>
-Editar os arquivos do Jenkinsfile e deployments para seu ambiente<br/>
+Clone repo to github: <br/>
+git add .<br/>
+git commit -m 'first commit'<br/>
+git push origin main<br/>
 
+Criar developer token no github;<br/>
+Adicionar no jenkins credentials para push do repositório;<br/>
+
+Como executar<br/>
+
+## Built With
+
+Terraform create:<br/>
+Deploy Jenkins
+Deploy EKS 
 
 ### Installation
 
@@ -74,9 +57,29 @@ terraform init<br/>
 terraform plan<br/>
 terraform plan<br/>
 
+Adicionar plugins no Jenkins:<br/>
+Add Plugins<br/>
+	Git<br/>
+	GitHub<br/>
+	Docker<br/>
+	Kubernetes<br/>
+	kubernetes continuous deploy<br/>
+
+Jenkins credentials:<br/>
+github<br/>
+docker<br/>
+kubernets<br/>
+cloud kubernetes with jenkins/jnlp-slave<br/>
+
+
+## Getting Started
+
+Conf github webhook:<br/>
+Enable jenkins pipeline - build triggers enable github hook trigger
+Enable webhook github -> http://ip:8080/github-webhook/
+
+
 ### Creating A Pull Request
-
-
 
 ## Authors
 
