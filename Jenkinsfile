@@ -15,7 +15,6 @@ pipeline {
 
         stage('Docker Build Image') {
             steps {
-                sh 'docker build -t rodrigordavila/web-php-aws:${env.BUILD_ID} .'
                 sh 'docker build -t rodrigordavila/web-php-aws:latest .'
             }
         }
@@ -29,7 +28,6 @@ pipeline {
         stage('Push') {
 			steps {
 				sh 'docker push rodrigordavila/web-php-aws:latest'
-                sh 'docker push rodrigordavila/web-php-aws:${env.BUILD_ID}'
 			}
 		}
 
@@ -45,4 +43,10 @@ pipeline {
             }
         }
     }
+
+    post {
+		always {
+			sh 'docker logout'
+		}
+	}
 }
