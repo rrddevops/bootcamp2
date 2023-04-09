@@ -1,57 +1,49 @@
-pipeline{
+pipeline {
+    agent any
 
-	agent any
+    stages {
 
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-	}
-
-	stages {
-
-     	stage('Clone repo') {
-		    steps {
-                // Get some code from a GitHub repository
-                git url: 'https://github.com/rrddevops/bootcamp2.git', credentialsId: 'github' ,branch: 'main'
-
-          	}
-	  	}
-
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t rodrigordavila/web-php-aws:latest .'
-			}
-		}
-
-		stage('Login') {
-
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push') {
-
-			steps {
-				sh 'docker push rodrigordavila/web-php-aws:latest'
-			}
-		}
-
-		stage('EKS Cluster and Deploy') {
+        stage('Get Source') {
             steps {
-				withAWS(credentials: 'aws-cred') {
-                    script {
-						sh 'aws eks update-kubeconfig --name bootcamp-dev-eks --region us-east-1'
-						sh 'kubectl apply -f deployments.yaml'
-					}
-				}
-			}
-		}
-	}
-	
-	post {
-		always {
-			sh 'docker logout'
-		}
-	}
+                git url: 'https://github.com/rrddevops/bootcamp2.git', credentialsId: 'github', branch: 'main'
+            }
+        }
+
+        stage('Docker Build Image') {
+            steps {
+                script {
+                    dockerapp = docker.build("rodrigordavila/web-php-aws:${env.BUILD_ID}",
+                      '-f Dockerfile .')
+                }
+            }
+        }
+
+        stage('Docker Push Image') {
+            steps {
+                script {
+                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+
+        stage('Deploy Kubernetes') {
+            agent {
+                kubernetes {
+                    cloud 'kubernetes'
+                }
+            }
+            environment {
+                tag_version = "${env.BUILD_ID}"
+            }
+
+            steps {
+                sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/deployments.yaml'
+                sh 'cat ./k8s/deployments.yaml'
+                kubernetesDeploy(configs: '**/k8s/**', kubeconfigId: 'kubeconfig')
+            }
+        }
+    }
 }
