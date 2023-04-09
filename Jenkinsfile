@@ -16,6 +16,7 @@ pipeline {
         stage('Docker Build Image') {
             steps {
                 sh 'docker build -t rodrigordavila/web-php-aws:latest .'
+                sh 'docker build -t rodrigordavila/web-php-aws:$BUILD_NUMBER .'
             }
         }
 
@@ -28,6 +29,7 @@ pipeline {
         stage('Push') {
 			steps {
 				sh 'docker push rodrigordavila/web-php-aws:latest'
+                sh 'docker push rodrigordavila/web-php-aws:$BUILD_NUMBER'
 			}
 		}
 
