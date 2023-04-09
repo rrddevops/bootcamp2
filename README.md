@@ -65,7 +65,6 @@ terraform plan<br/>
 Adicionar plugins no Jenkins:<br/>
 Add Plugins<br/>
 	Git<br/>
-	GitHub<br/>
 	Docker<br/>
   CloudBees AWS Credentials Plugin<br/>
 	Pipeline: AWS StepsVersion<br/>

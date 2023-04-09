@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
 
     stages {
 
@@ -11,23 +15,24 @@ pipeline {
 
         stage('Docker Build Image') {
             steps {
-                script {
-                    dockerapp = docker.build("rodrigordavila/web-php-aws:${env.BUILD_ID}",
-                      '-f Dockerfile .')
-                }
+                sh 'docker build -t rodrigordavila/web-php-aws:${env.BUILD_ID} .'
+                sh 'docker build -t rodrigordavila/web-php-aws:latest .'
             }
         }
 
         stage('Docker Push Image') {
             steps {
-                script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        dockerapp.push('latest')
-                        dockerapp.push("${env.BUILD_ID}")
-                    }
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
             }
         }
+
+        stage('Push') {
+			steps {
+				sh 'docker push rodrigordavila/web-php-aws:latest'
+                sh 'docker push rodrigordavila/web-php-aws:${env.BUILD_ID}'
+			}
+		}
 
         stage('Deploy Kubernetes') {
             steps {
