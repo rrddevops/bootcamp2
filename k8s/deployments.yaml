@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: php
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: php
