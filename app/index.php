@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
-        AWS Instance - versão 08
+        AWS Instance - versão 09
  </title>
   <style>
         body {
