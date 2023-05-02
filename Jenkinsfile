@@ -39,6 +39,7 @@ pipeline {
                     script {
                         sh 'aws eks list-clusters'
                         sh 'aws eks update-kubeconfig --name bootcamp-dev-eks'
+                        sh 'sed -i "s/<TAG>/$BUILD_NUMBER/" ./k8s/deployments.yaml'
                         sh 'kubectl apply -f ./k8s/deployments.yaml'
                     }
                 }

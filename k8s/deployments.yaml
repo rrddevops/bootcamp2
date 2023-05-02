@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: php
-        image: rodrigordavila/web-php-aws:latest
+        image: rodrigordavila/web-php-aws:<TAG>
         ports:
           - containerPort: 80
 ---
