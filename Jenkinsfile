@@ -15,8 +15,10 @@ pipeline {
 
         stage('Docker Build Image') {
             steps {
-                sh 'docker build -t rodrigordavila/web-php-aws:latest .'
-                sh 'docker build -t rodrigordavila/web-php-aws:$BUILD_NUMBER .'
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 929163871313.dkr.ecr.us-east-1.amazonaws.com'
+                sh 'docker build -t demoapp/php .'
+                sh 'docker tag demoapp/php:latest 929163871313.dkr.ecr.us-east-1.amazonaws.com/demoapp/php:latest'
+                sh 'docker push 929163871313.dkr.ecr.us-east-1.amazonaws.com/demoapp/php:latest'
             }
         }
 
