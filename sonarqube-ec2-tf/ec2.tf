@@ -16,10 +16,10 @@ data "aws_ami" "amazon-linux-2" {
 
 }
 
-resource "aws_instance" "Sonar" {
+resource "aws_instance" "sonar" {
   ami             = data.aws_ami.amazon-linux-2.id
   instance_type   = "t2.micro"
-  security_groups = [aws_security_group.jenkins-sg.name]
+  security_groups = [aws_security_group.sonar-sg.name]
   key_name        = "sonar-tf-key-pair"
   user_data       = var.ec2_user_data
 

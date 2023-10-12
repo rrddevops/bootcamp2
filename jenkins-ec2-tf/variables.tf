@@ -23,8 +23,8 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade
-sudo amazon-linux-extras install java-openjdk11
-sudo yum install java-1.8.0-openjdk
+sudo amazon-linux-extras install java-openjdk11 -y
+sudo yum install java-1.8.0-openjdk -y
 java -version
 sudo yum install jenkins -y
 sudo usermod -aG docker jenkins 
