@@ -18,20 +18,14 @@ pipeline {
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 929163871313.dkr.ecr.us-east-1.amazonaws.com'
                 sh 'docker build -t demoapp/php .'
                 sh 'docker tag demoapp/php:latest 929163871313.dkr.ecr.us-east-1.amazonaws.com/demoapp/php:latest'
-                sh 'docker push 929163871313.dkr.ecr.us-east-1.amazonaws.com/demoapp/php:latest'
-            }
-        }
-
-        stage('Docker Push Image') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh ''
             }
         }
 
         stage('Push') {
 			steps {
-				sh 'docker push rodrigordavila/web-php-aws:latest'
-                sh 'docker push rodrigordavila/web-php-aws:$BUILD_NUMBER'
+				sh 'docker push 929163871313.dkr.ecr.us-east-1.amazonaws.com/demoapp/php:latest'
+                sh 'docker push 929163871313.dkr.ecr.us-east-1.amazonaws.com/demoapp/php:$BUILD_NUMBER'
 			}
 		}
 
