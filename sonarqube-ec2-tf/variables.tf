@@ -33,5 +33,7 @@ sudo sysctl -w vm.max_map_count=262144
 sudo sysctl -p
 sudo sysctl -w fs.file-max=131072
 sudo sysctl -p
+wget https://github.com/rrddevops/bootcamp2/blob/main/sonarqube-ec2-tf/docker-compose.yaml
+sudo docker-compose up -d
 EOF
 }
