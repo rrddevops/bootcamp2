@@ -1,23 +1,21 @@
-data "aws_ami" "amazon-linux-2" {
+data "aws_ami" "ubuntu" {
   most_recent = true
 
   filter {
-    name   = "owner-alias"
-    values = ["amazon"]
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server*"]
   }
-
 
   filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm*"]
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 
-  owners = ["amazon"]
-
+  owners = ["099720109477"] # Canonical
 }
 
 resource "aws_instance" "sonar" {
-  ami             = data.aws_ami.amazon-linux-2.id
+  ami             = data.aws_ami.ubuntu.id
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.sonar-sg.name]
   key_name        = "sonar-tf-key-pair"

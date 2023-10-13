@@ -12,24 +12,26 @@ variable "ec2_user_data" {
   type        = string
   default     = <<EOF
 #!/bin/bash
-sudo yum update -y
-sudo amazon-linux-extras install java-openjdk11 -y
-sudo yum install -y java-11-openjdk-devel
-java -version
-sudo amazon-linux-extras install postgresql10 -y
-sudo yum install -y postgresql-server postgresql-devel
-sudo /usr/bin/postgresql-setup --initdb
-sudo systemctl start postgresql
-sudo -u postgres psql -c "CREATE DATABASE sonar;"
-sudo -u postgres psql -c "CREATE USER sonar WITH PASSWORD 'sonar';"
-sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE sonar TO sonar;"
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.2.1.78527.zip
-unzip sonarqube-10.2.1.78527.zip
-sudo mv sonarqube-10.2.1.78527 /opt/sonarqube
-sudo bash -c 'echo sonar.jdbc.username=sonar >> /opt/sonarqube/conf/sonar.properties'
-sudo bash -c 'echo sonar.jdbc.password=sonar >> /opt/sonarqube/conf/sonar.properties'
-sudo bash -c 'echo sonar.jdbc.url=jdbc:postgresql://localhost/sonar >> /opt/sonarqube/conf/sonar.properties'
-sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh start
-sudo /opt/sonarqube/bin/linux-x86-64/sonar.sh status
+sudo apt-get update -y
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update -y
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo groupadd docker
+sudo usermod -aG docker ubuntu
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -p
+sudo sysctl -w fs.file-max=131072
+sudo sysctl -p
 EOF
 }
